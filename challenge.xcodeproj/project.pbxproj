@@ -19,7 +19,11 @@
 		D6200B881E726118009E0925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6200B861E726118009E0925 /* LaunchScreen.storyboard */; };
 		D6200B931E726119009E0925 /* challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B921E726119009E0925 /* challengeTests.swift */; };
 		D6200B9E1E726119009E0925 /* challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B9D1E726119009E0925 /* challengeUITests.swift */; };
-		D6200BAC1E726AF4009E0925 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BAB1E726AF4009E0925 /* SwiftyJSON.swift */; };
+		D6200BAE1E72A032009E0925 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BAD1E72A032009E0925 /* Networking.swift */; };
+		D6200BB21E72A186009E0925 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB11E72A186009E0925 /* Constants.swift */; };
+		D6200BB51E72A8EE009E0925 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB31E72A8EE009E0925 /* Album.swift */; };
+		D6200BB61E72A8EE009E0925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB41E72A8EE009E0925 /* User.swift */; };
+		D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +68,11 @@
 		D6200B991E726119009E0925 /* challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = challengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6200B9D1E726119009E0925 /* challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengeUITests.swift; sourceTree = "<group>"; };
 		D6200B9F1E726119009E0925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6200BAB1E726AF4009E0925 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D6200BAD1E72A032009E0925 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		D6200BB11E72A186009E0925 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D6200BB31E72A8EE009E0925 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		D6200BB41E72A8EE009E0925 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +142,12 @@
 			isa = PBXGroup;
 			children = (
 				D6200B781E726118009E0925 /* AppDelegate.swift */,
-				D6200BAB1E726AF4009E0925 /* SwiftyJSON.swift */,
+				D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */,
+				D6200BAD1E72A032009E0925 /* Networking.swift */,
 				D6200B7D1E726118009E0925 /* MasterViewController.swift */,
+				D6200BB11E72A186009E0925 /* Constants.swift */,
+				D6200BB31E72A8EE009E0925 /* Album.swift */,
+				D6200BB41E72A8EE009E0925 /* User.swift */,
 				D6200B7F1E726118009E0925 /* DetailViewController.swift */,
 				D6200B811E726118009E0925 /* Main.storyboard */,
 				D6200B841E726118009E0925 /* Assets.xcassets */,
@@ -458,8 +470,12 @@
 				D6200B791E726118009E0925 /* AppDelegate.swift in Sources */,
 				D6200B7C1E726118009E0925 /* challenge.xcdatamodeld in Sources */,
 				D6200B7E1E726118009E0925 /* MasterViewController.swift in Sources */,
-				D6200BAC1E726AF4009E0925 /* SwiftyJSON.swift in Sources */,
+				D6200BAE1E72A032009E0925 /* Networking.swift in Sources */,
+				D6200BB21E72A186009E0925 /* Constants.swift in Sources */,
+				D6200BB61E72A8EE009E0925 /* User.swift in Sources */,
+				D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */,
 				D6200B801E726118009E0925 /* DetailViewController.swift in Sources */,
+				D6200BB51E72A8EE009E0925 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +554,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -588,6 +605,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -611,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 025DF331ACBACAD7548484D9 /* Pods-challenge.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = challenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -624,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF1ACCC898D896D96A749A14 /* Pods-challenge.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = challenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -710,6 +730,7 @@
 				D6200BA41E726119009E0925 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6200BA51E726119009E0925 /* Build configuration list for PBXNativeTarget "challengeTests" */ = {
 			isa = XCConfigurationList;
@@ -718,6 +739,7 @@
 				D6200BA71E726119009E0925 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6200BA81E726119009E0925 /* Build configuration list for PBXNativeTarget "challengeUITests" */ = {
 			isa = XCConfigurationList;
@@ -726,6 +748,7 @@
 				D6200BAA1E726119009E0925 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
