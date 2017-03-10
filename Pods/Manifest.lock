@@ -1,0 +1,18 @@
+PODS:
+  - DATAStack (7.0.1)
+  - Sync (2.7.0):
+    - DATAStack (~> 7.0.1)
+    - SYNCPropertyMapper (~> 5.2.0)
+  - SYNCPropertyMapper (5.2.0)
+
+DEPENDENCIES:
+  - Sync (~> 2.7)
+
+SPEC CHECKSUMS:
+  DATAStack: 9ca4ba8e8e4f389f1593ad3178d7a4d4df69d648
+  Sync: b02ce41aa8080049a2932fd7342fe189edb2298a
+  SYNCPropertyMapper: b3157f5183285c8a25ba23877b95a06ec2547e73
+
+PODFILE CHECKSUM: d911af19003c869de3739c28178b234926bc6ae3
+
+COCOAPODS: 1.1.1
