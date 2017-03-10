@@ -10,6 +10,7 @@
 		0CFA73D0FBDB3107BFF27035 /* Pods_challengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672BEC7DB03274D6169ECD7 /* Pods_challengeTests.framework */; };
 		BBCEB6B96D31580F9C2E77E6 /* Pods_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C85F79F2C38AE4818A50029 /* Pods_challenge.framework */; };
 		D19417348773BEB268C54539 /* Pods_challengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6040DDCDE440406C4EA692 /* Pods_challengeUITests.framework */; };
+		D61664D91E72EFB10017D9A7 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = D61664D81E72EFB10017D9A7 /* splash.png */; };
 		D6200B791E726118009E0925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B781E726118009E0925 /* AppDelegate.swift */; };
 		D6200B7C1E726118009E0925 /* challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6200B7A1E726118009E0925 /* challenge.xcdatamodeld */; };
 		D6200B7E1E726118009E0925 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B7D1E726118009E0925 /* MasterViewController.swift */; };
@@ -21,8 +22,6 @@
 		D6200B9E1E726119009E0925 /* challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B9D1E726119009E0925 /* challengeUITests.swift */; };
 		D6200BAE1E72A032009E0925 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BAD1E72A032009E0925 /* Networking.swift */; };
 		D6200BB21E72A186009E0925 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB11E72A186009E0925 /* Constants.swift */; };
-		D6200BB51E72A8EE009E0925 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB31E72A8EE009E0925 /* Album.swift */; };
-		D6200BB61E72A8EE009E0925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB41E72A8EE009E0925 /* User.swift */; };
 		D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +52,7 @@
 		5C85F79F2C38AE4818A50029 /* Pods_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C672BEC7DB03274D6169ECD7 /* Pods_challengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1ACCC898D896D96A749A14 /* Pods-challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-challenge/Pods-challenge.release.xcconfig"; sourceTree = "<group>"; };
+		D61664D81E72EFB10017D9A7 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		D6200B751E726118009E0925 /* challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6200B781E726118009E0925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6200B7B1E726118009E0925 /* challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = challenge.xcdatamodel; sourceTree = "<group>"; };
@@ -70,8 +70,6 @@
 		D6200B9F1E726119009E0925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6200BAD1E72A032009E0925 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D6200BB11E72A186009E0925 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D6200BB31E72A8EE009E0925 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		D6200BB41E72A8EE009E0925 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +114,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D61664D71E72EFA20017D9A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D61664D81E72EFB10017D9A7 /* splash.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D6200B6C1E726118009E0925 = {
 			isa = PBXGroup;
 			children = (
@@ -141,13 +147,12 @@
 		D6200B771E726118009E0925 /* challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D61664D71E72EFA20017D9A7 /* Resources */,
 				D6200B781E726118009E0925 /* AppDelegate.swift */,
 				D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */,
 				D6200BAD1E72A032009E0925 /* Networking.swift */,
 				D6200B7D1E726118009E0925 /* MasterViewController.swift */,
 				D6200BB11E72A186009E0925 /* Constants.swift */,
-				D6200BB31E72A8EE009E0925 /* Album.swift */,
-				D6200BB41E72A8EE009E0925 /* User.swift */,
 				D6200B7F1E726118009E0925 /* DetailViewController.swift */,
 				D6200B811E726118009E0925 /* Main.storyboard */,
 				D6200B841E726118009E0925 /* Assets.xcassets */,
@@ -302,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61664D91E72EFB10017D9A7 /* splash.png in Resources */,
 				D6200B881E726118009E0925 /* LaunchScreen.storyboard in Resources */,
 				D6200B851E726118009E0925 /* Assets.xcassets in Resources */,
 				D6200B831E726118009E0925 /* Main.storyboard in Resources */,
@@ -472,10 +478,8 @@
 				D6200B7E1E726118009E0925 /* MasterViewController.swift in Sources */,
 				D6200BAE1E72A032009E0925 /* Networking.swift in Sources */,
 				D6200BB21E72A186009E0925 /* Constants.swift in Sources */,
-				D6200BB61E72A8EE009E0925 /* User.swift in Sources */,
 				D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */,
 				D6200B801E726118009E0925 /* DetailViewController.swift in Sources */,
-				D6200BB51E72A8EE009E0925 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
