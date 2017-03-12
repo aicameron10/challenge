@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let urlString: String
         
         urlString = Constants.Albums
-
+        
         AppDelegate.Manager.request(urlString, method: .get).responseJSON { response in
             
             if let jsonResponse = response.result.value {

@@ -21,26 +21,26 @@ class MasterViewController: UITableViewController {
     
     
     required init(dataStack: DATAStack) {
-       
+        
         super.init(nibName: nil, bundle: nil);
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(fetchNewData), for: .valueChanged)
         
         self.fetchNewData()
         self.fetchCurrentObjects()
-       
-       
+        
+        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -81,7 +81,7 @@ class MasterViewController: UITableViewController {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Posts")
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
-       self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
+        self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
         self.tableView.reloadData()
     }
     
@@ -90,7 +90,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = items[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
@@ -115,7 +115,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         var cell = CustomCell()
-   
+        
         cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
         
         let data = self.items[indexPath.row]
@@ -126,7 +126,7 @@ class MasterViewController: UITableViewController {
         cell.title.text = data.value(forKey: "title") as? String
         
         cell.email.text = data.value(forKey: "body") as? String
-    
+        
         //cell?.detailTextLabel?.text = data.user.username
         
         //let object = objects[indexPath.row] as! NSDate
@@ -141,18 +141,18 @@ class MasterViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-      return UITableViewAutomaticDimension
+        return UITableViewAutomaticDimension
         
     }
-
+    
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-     return UITableViewAutomaticDimension
-     }
+        return UITableViewAutomaticDimension
+    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

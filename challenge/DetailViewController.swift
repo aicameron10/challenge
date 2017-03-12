@@ -12,9 +12,9 @@ import DATAStack
 
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    
     
     func configureView() {
         // Update the user interface for the detail item.
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var detailItem: NSDate? {
+    var detailItem: NSManagedObject? {
         didSet {
             // Update the view.
             self.configureView()
