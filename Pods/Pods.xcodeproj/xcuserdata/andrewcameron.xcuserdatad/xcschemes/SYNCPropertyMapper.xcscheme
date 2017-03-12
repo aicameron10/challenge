@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C25C72E1575B9E9AAA6CACAB028503B3"
+               BlueprintIdentifier = "BABBB56F80780F0CD658216EF32F9AA8"
                BuildableName = "SYNCPropertyMapper.framework"
                BlueprintName = "SYNCPropertyMapper"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C25C72E1575B9E9AAA6CACAB028503B3"
+            BlueprintIdentifier = "BABBB56F80780F0CD658216EF32F9AA8"
             BuildableName = "SYNCPropertyMapper.framework"
             BlueprintName = "SYNCPropertyMapper"
             ReferencedContainer = "container:Pods.xcodeproj">
