@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import DATAStack
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController,UISearchBarDelegate {
     
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
@@ -18,6 +18,9 @@ class MasterViewController: UITableViewController {
     lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
     
     var items = [NSManagedObject]()
+    var fields : Array<String> = Array()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     required init(dataStack: DATAStack) {
@@ -29,6 +32,8 @@ class MasterViewController: UITableViewController {
         super.init(coder: aDecoder)!
     }
     
+    var searchActive : Bool = false
+    var filtered:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,8 @@ class MasterViewController: UITableViewController {
         
         self.fetchNewData()
         self.fetchCurrentObjects()
+        
+       searchBar.delegate = self
         
         
         if let split = self.splitViewController {
@@ -60,17 +67,42 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered = fields.filter({ (text) -> Bool in
+            let tmp: NSString = text as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
     }
     
     func fetchNewData() {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.fetchUsers {_ in
-            //self.fetchCurrentObjects()
+            self.fetchCurrentObjects()
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
@@ -78,11 +110,19 @@ class MasterViewController: UITableViewController {
     }
     
     func fetchCurrentObjects() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Posts")
+       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Posts")
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-        self.tableView.reloadData()
+        
+        for post in self.items as! [Posts] {
+            let uu = post.users as Users
+            
+            print(uu.email as String)
+           
+        }
+        
+         self.tableView.reloadData()
     }
     
     // MARK: - Segues
@@ -109,6 +149,9 @@ class MasterViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 44.0 // standard tableViewCell height
         tableView.rowHeight = UITableViewAutomaticDimension
+        if(searchActive) {
+            return filtered.count
+        }
         return self.items.count
     }
     
@@ -118,19 +161,27 @@ class MasterViewController: UITableViewController {
         
         cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
         
-        let data = self.items[indexPath.row]
-        
         cell.sizeToFit()
         cell.title.numberOfLines = 0
         cell.email.numberOfLines = 0
-        cell.title.text = data.value(forKey: "title") as? String
         
-        cell.email.text = data.value(forKey: "body") as? String
+
+        if(searchActive){
+            cell.title.text = filtered[indexPath.row]
+           
+        } else {
+           let data = self.items[indexPath.row]
+            cell.title.text = data.value(forKey: "title") as? String
+            fields.append(cell.title.text!)
+            cell.email.text = data.value(forKey: "body") as? String
+            //cell.email.text = data.value(forAttributeDescription: "Users", usingRemoteValue: "email") as! String?
+            
+            //cell.email.text = data.value(forKey: "users") as! String?
+        }
+        
         
         //cell?.detailTextLabel?.text = data.user.username
-        
-        //let object = objects[indexPath.row] as! NSDate
-        //cell.textLabel!.text = object.description
+       
         return cell
     }
     
