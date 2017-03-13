@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 class DetailCustomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collect: UICollectionView!
@@ -22,11 +23,18 @@ class DetailCustomCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         
     }
     
+    var arrayPhotos = [String]()
     
     func setUpTable()
     {
         collect?.delegate = self
         collect?.dataSource = self
+        let prefs = UserDefaults.standard
+        if (prefs.object(forKey: "PhotoArray") != nil){
+            
+            arrayPhotos = prefs.object(forKey: "PhotoArray") as! [String]
+            
+        }
         
     }
     
@@ -39,16 +47,27 @@ class DetailCustomCell: UITableViewCell, UICollectionViewDataSource, UICollectio
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        
+        
+        if (arrayPhotos.isEmpty) {
+            return 0
+        } else {
+            return arrayPhotos.count
+        }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath as IndexPath)
-        if indexPath.row%2 == 0 {
-            cell.backgroundColor = UIColor.blue
-        } else {
-            cell.backgroundColor = UIColor.black
-        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        
+        let aUrl = arrayPhotos[indexPath.row]
+        let url = URL(string: aUrl)
+        
+        
+        cell.cellImageView.kf.setImage(with: url)
+        
         
         return cell
     }

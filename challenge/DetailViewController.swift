@@ -19,9 +19,22 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var body: UILabel!
     
+    var items = [NSManagedObject]()
+    
+    lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
+    
     var indexOfExpandedCell = -1
     
     var ShowMoreLess = "closed"
+    
+    var userID = -1
+    
+    var albumID = -1
+    
+    var arrayAlbum = [albums]()
+    
+    
+    var arrayPhotos = [String]()
     
     var shouldCellBeExpanded = false
     
@@ -31,11 +44,27 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             if let label = self.detailDescriptionLabel {
                 label.text = detail.description
                 
+                
+                
                 titleLabel.text = detail.value(forKey: "title") as? String
                 body.text = detail.value(forKey: "body") as? String
+                
+                userID = (detail.value(forKey: "userId") as? Int)!
+                
+                fetchCurrentObjects()
             }
         }
     }
+    
+    required init(dataStack: DATAStack) {
+        
+        super.init(nibName: nil, bundle: nil);
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +85,68 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
+    func fetchCurrentObjects() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Albums")
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        
+        self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
+        
+        //print((try! dataStack.mainContext.fetch(request)))
+        
+        arrayAlbum.removeAll()
+        
+        for user in self.items as! [Albums] {
+            if (user.userId == userID){
+                let aar = albums()
+                aar.id = user.id
+                aar.title = user.title
+                aar.userId = user.userId
+                
+                self.arrayAlbum.append(aar)
+                
+            }
+        }
+        
+        self.tabelView.reloadData()
+    }
+    
+    
+    func fetchCurrentAlbumsPhotos() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Photos")
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        
+        self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
+        
+        arrayPhotos.removeAll()
+        
+        for photo in self.items as! [Photos] {
+            if (photo.albumId == albumID){
+                
+                
+                self.arrayPhotos.append(photo.thumbnailUrl)
+                
+            }
+            
+        }
+        
+        
+        let prefs = UserDefaults.standard
+        
+        prefs.set(self.arrayPhotos, forKey: "PhotoArray")
+        
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return 1 //However many static cells you want
+        if (arrayAlbum.isEmpty) {
+            return 0
+        } else {
+            return arrayAlbum.count
+        }
+        
         
         
     }
@@ -75,8 +162,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCustomCell
         
+        let ar = arrayAlbum[indexPath.row]
         
-        //cell.name.text = options[indexPath.row]
+        cell.albumName.text = ar.title
         
         
         
@@ -84,6 +172,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         {
             
             //let type = cell.name.text!
+            
+            albumID = ar.id
+            
+            fetchCurrentAlbumsPhotos()
             
             ShowMoreLess = "open"
             
@@ -154,4 +246,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
 }
+class albums {
+    var id = 0
+    var userId = 0
+    var title = ""
+    
+}
+
 

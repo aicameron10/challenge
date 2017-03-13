@@ -46,14 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         self.fetchUsers { _ in
+            
+            self.fetchPosts { _ in
+            }
+            
+            self.fetchAlbums { _ in
+                
+                self.fetchPhotos { _ in
+                }
+            }
+            
         }
-        self.fetchPosts { _ in
-        }
-        self.fetchPhotos { _ in
-        }
-        self.fetchAlbums { _ in
-        }
-        
         
         
     }
@@ -75,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return false
     }
+    
     
     
     public func fetchUsers(_ completion: @escaping (NSError?) -> Void)  {

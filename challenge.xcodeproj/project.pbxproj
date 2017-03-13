@@ -28,6 +28,7 @@
 		D6200B9E1E726119009E0925 /* challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B9D1E726119009E0925 /* challengeUITests.swift */; };
 		D6200BB21E72A186009E0925 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB11E72A186009E0925 /* Constants.swift */; };
 		D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */; };
+		D6FD81681E76A37A0092BAA6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD81671E76A37A0092BAA6 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		D6200B9F1E726119009E0925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6200BB11E72A186009E0925 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D6FD81671E76A37A0092BAA6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				D61665A11E752E670017D9A7 /* Photos.swift */,
 				D61665A31E753C960017D9A7 /* CustomCell.swift */,
 				D61665A51E755F0A0017D9A7 /* DetailCustomCell.swift */,
+				D6FD81671E76A37A0092BAA6 /* CollectionViewCell.swift */,
 			);
 			path = challenge;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				D6200B7E1E726118009E0925 /* MasterViewController.swift in Sources */,
 				D6200BB21E72A186009E0925 /* Constants.swift in Sources */,
 				D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */,
+				D6FD81681E76A37A0092BAA6 /* CollectionViewCell.swift in Sources */,
 				D61665A01E752E230017D9A7 /* Albums.swift in Sources */,
 				D6200B801E726118009E0925 /* DetailViewController.swift in Sources */,
 				D61665A21E752E670017D9A7 /* Photos.swift in Sources */,

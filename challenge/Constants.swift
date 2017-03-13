@@ -16,15 +16,5 @@ struct Constants {
     static let Photos: String = "https://jsonplaceholder.typicode.com/photos"
     static let Albums: String = "https://jsonplaceholder.typicode.com/albums"
     
-    struct Colors {
-        
-        
-    }
-    
-    struct Data {
-        
-        static var myStrings = [String]()
-        
-    }
     
 }

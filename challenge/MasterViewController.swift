@@ -13,7 +13,6 @@ import DATAStack
 class MasterViewController: UITableViewController,UISearchBarDelegate {
     
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
     
     lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
     
@@ -101,7 +100,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     func fetchNewData() {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.fetchUsers {_ in
+        appDelegate.fetchPosts {_ in
             self.fetchCurrentObjects()
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
@@ -114,9 +113,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-        
-        
-        
+  
         self.tableView.reloadData()
     }
     
@@ -169,7 +166,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
             cell.title.text = data.value(forKey: "title") as? String
             fields.append(cell.title.text!)
             cell.email.text = data.value(forKey: "body") as? String
-            //cell.email.text = data.value(forAttributeDescription: "User", usingRemoteValue: "email") as! String?
+            //cell.email.text = data.value(forAttributeDescription: "Users", usingRemoteValue: "email") as! String?
             
             //cell.email.text = data.value(forKey: "users") as! String?
         }

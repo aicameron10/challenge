@@ -12,8 +12,8 @@ import CoreData
 @objc(Photos)
 class Photos: NSManagedObject {
     
-    @NSManaged public var albumId: Int64
-    @NSManaged public var id: Int64
+    @NSManaged public var albumId: Int
+    @NSManaged public var id: Int
     @NSManaged public var thumbnailUrl: String
     @NSManaged public var title: String
     @NSManaged public var url: String

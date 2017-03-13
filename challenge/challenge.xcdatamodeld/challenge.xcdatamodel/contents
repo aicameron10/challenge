@@ -43,9 +43,9 @@
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Posts" inverseName="users" inverseEntity="Posts" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Albums" positionX="259" positionY="260" width="128" height="118"/>
-        <element name="Photos" positionX="441" positionY="234" width="128" height="133"/>
-        <element name="Posts" positionX="79" positionY="195" width="128" height="118"/>
-        <element name="User" positionX="81" positionY="369" width="128" height="193"/>
+        <element name="Albums" positionX="259" positionY="260" width="128" height="120"/>
+        <element name="Photos" positionX="441" positionY="234" width="128" height="135"/>
+        <element name="Posts" positionX="79" positionY="195" width="128" height="120"/>
+        <element name="User" positionX="81" positionY="369" width="128" height="195"/>
     </elements>
 </model>

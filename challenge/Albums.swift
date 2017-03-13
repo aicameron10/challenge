@@ -12,9 +12,9 @@ import CoreData
 @objc(Albums)
 class Albums: NSManagedObject {
     
-    @NSManaged public var id: Int64
+    @NSManaged public var id: Int
     @NSManaged public var title: String
-    @NSManaged public var userId: Int64
+    @NSManaged public var userId: Int
     @NSManaged public var photos: NSSet
     @NSManaged public var user: User
     
