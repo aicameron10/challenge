@@ -19,7 +19,7 @@ class DetailCustomCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         // Initialization code
         setUpTable()
         
-       
+        
     }
     
     
@@ -28,9 +28,8 @@ class DetailCustomCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         collect?.delegate = self
         collect?.dataSource = self
         
-
     }
-
+    
     
     
     // MARK: UICollectionViewDataSource

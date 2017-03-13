@@ -15,7 +15,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
- 
+    
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var body: UILabel!
     
@@ -31,8 +31,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             if let label = self.detailDescriptionLabel {
                 label.text = detail.description
                 
-                 titleLabel.text = detail.value(forKey: "title") as? String
-                 body.text = detail.value(forKey: "body") as? String
+                titleLabel.text = detail.value(forKey: "title") as? String
+                body.text = detail.value(forKey: "body") as? String
             }
         }
     }
@@ -78,22 +78,22 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         //cell.name.text = options[indexPath.row]
         
-      
+        
         
         if(shouldCellBeExpanded  && indexPath.row == indexOfExpandedCell)
         {
-
+            
             //let type = cell.name.text!
- 
+            
             ShowMoreLess = "open"
-         
+            
             
         }else{
-          
+            
             ShowMoreLess = "closed"
         }
         
-
+        
         return cell
         
     }
@@ -104,7 +104,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-     
+        
         
         if(ShowMoreLess == "closed"){
             shouldCellBeExpanded = true
@@ -115,12 +115,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             self.tabelView.beginUpdates()
             self.tabelView.reloadRows(at: [indexPathNow], with: .fade)
             self.tabelView.endUpdates()
- 
+            
             
         }else{
             
             shouldCellBeExpanded = false
- 
+            
             indexOfExpandedCell = indexPath.row
             //print(indexOfEditCell)
             let indexPathNow = IndexPath(item: indexOfExpandedCell, section: 0)
@@ -151,7 +151,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-
+    
     
 }
 

@@ -45,7 +45,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         self.fetchNewData()
         self.fetchCurrentObjects()
         
-       searchBar.delegate = self
+        searchBar.delegate = self
         
         
         if let split = self.splitViewController {
@@ -110,14 +110,14 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     }
     
     func fetchCurrentObjects() {
-       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Posts")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Posts")
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-       
-   
         
-         self.tableView.reloadData()
+        
+        
+        self.tableView.reloadData()
     }
     
     // MARK: - Segues
@@ -160,23 +160,23 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         cell.title.numberOfLines = 0
         cell.email.numberOfLines = 0
         
-
+        
         if(searchActive){
             cell.title.text = filtered[indexPath.row]
-           
+            
         } else {
-           let data = self.items[indexPath.row]
+            let data = self.items[indexPath.row]
             cell.title.text = data.value(forKey: "title") as? String
             fields.append(cell.title.text!)
             cell.email.text = data.value(forKey: "body") as? String
-            //cell.email.text = data.value(forAttributeDescription: "Users", usingRemoteValue: "email") as! String?
+            //cell.email.text = data.value(forAttributeDescription: "User", usingRemoteValue: "email") as! String?
             
             //cell.email.text = data.value(forKey: "users") as! String?
         }
         
         
         //cell?.detailTextLabel?.text = data.user.username
-       
+        
         return cell
     }
     
