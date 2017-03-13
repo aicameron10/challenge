@@ -191,7 +191,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         
         if(searchActive){
             cell.title.text = filtered[indexPath.row]
-            
+        
         } else {
             let data = self.savedFiles[indexPath.row]
             let j = JSON(data)
@@ -228,7 +228,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items.remove(at: indexPath.row)
+            savedFiles.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
