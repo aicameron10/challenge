@@ -15,6 +15,6 @@ class Posts: NSManagedObject {
     @NSManaged public var id: Int64
     @NSManaged public var title: String
     @NSManaged public var userId: Int64
-    @NSManaged public var users: Users
+    @NSManaged public var user: User
     
 }

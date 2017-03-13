@@ -1,8 +1,8 @@
 import Foundation
 import CoreData
 
-@objc(Users)
-class Users: NSManagedObject {
+@objc(User)
+class User: NSManagedObject {
     @NSManaged public var address: NSData
     @NSManaged public var company: NSData
     @NSManaged public var email: String

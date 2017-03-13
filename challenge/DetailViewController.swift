@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  challenge
 //
-//  Created by Andrew Cameron on 2017/03/10.
+//  Created by Andrew Cameron on 2017/03/12.
 //  Copyright © 2017 Andrew. All rights reserved.
 //
 
@@ -59,7 +59,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return 6 //However many static cells you want
+        return 1 //However many static cells you want
         
         
     }

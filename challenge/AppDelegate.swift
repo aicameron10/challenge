@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  challenge
 //
-//  Created by Andrew Cameron on 2017/03/10.
+//  Created by Andrew Cameron on 2017/03/12.
 //  Copyright © 2017 Andrew. All rights reserved.
 //
 
@@ -45,14 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        fetchPosts { _ in
+        self.fetchUsers { _ in
         }
-        fetchUsers { _ in
+        self.fetchPosts { _ in
         }
-        fetchPhotos { _ in
+        self.fetchPhotos { _ in
         }
-        fetchAlbums { _ in
+        self.fetchAlbums { _ in
         }
+        
+        
         
     }
     
@@ -96,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 
                 //print(dict?["data"] as! [[String : Any]])
                 
-                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "Users", dataStack: self.dataStack) { error in
+                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "User", dataStack: self.dataStack) { error in
                     completion(error)
                 }
                 

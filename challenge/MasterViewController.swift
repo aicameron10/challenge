@@ -114,13 +114,8 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-        
-        for post in self.items as! [Posts] {
-            let uu = post.users as Users
-            
-            print(uu.email as String)
-           
-        }
+       
+   
         
          self.tableView.reloadData()
     }

@@ -16,6 +16,6 @@ class Albums: NSManagedObject {
     @NSManaged public var title: String
     @NSManaged public var userId: Int64
     @NSManaged public var photos: NSSet
-    @NSManaged public var users: Users
+    @NSManaged public var user: User
     
 }
