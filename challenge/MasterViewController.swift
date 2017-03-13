@@ -17,7 +17,11 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
     
     var items = [NSManagedObject]()
+    var emails = [NSManagedObject]()
+    
     var fields : Array<String> = Array()
+    
+    var savedFiles: [[String: AnyObject]] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -113,7 +117,33 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         //print((try! dataStack.mainContext.fetch(request)))
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-  
+        
+        let requestEmails = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        self.emails = (try! dataStack.mainContext.fetch(requestEmails)) as! [NSManagedObject]
+        
+        
+        for user in self.items as! [Posts] {
+            //print(user.userId)
+            
+            for email in self.emails as! [User] {
+                //print(email.email)
+                if (user.userId == email.id){
+                    var add : [String: String] = [:]
+                    
+                    add["title"] = user.title
+                    add["email"] = email.email
+                    
+                    savedFiles.append(add as [String : AnyObject])
+                    
+                    //print(savedFiles)
+                }
+            }
+            
+        }
+        
+        
+        
+        
         self.tableView.reloadData()
     }
     
@@ -141,10 +171,11 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         
         tableView.estimatedRowHeight = 44.0 // standard tableViewCell height
         tableView.rowHeight = UITableViewAutomaticDimension
+        
         if(searchActive) {
             return filtered.count
         }
-        return self.items.count
+        return self.savedFiles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -162,10 +193,12 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
             cell.title.text = filtered[indexPath.row]
             
         } else {
-            let data = self.items[indexPath.row]
-            cell.title.text = data.value(forKey: "title") as? String
+            let data = self.savedFiles[indexPath.row]
+            let j = JSON(data)
+            print(j)
+            cell.title.text = j["title"].string
             fields.append(cell.title.text!)
-            cell.email.text = data.value(forKey: "body") as? String
+            cell.email.text = j["email"].string
             //cell.email.text = data.value(forAttributeDescription: "Users", usingRemoteValue: "email") as! String?
             
             //cell.email.text = data.value(forKey: "users") as! String?
