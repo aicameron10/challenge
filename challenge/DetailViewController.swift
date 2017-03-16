@@ -25,13 +25,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     var indexOfExpandedCell = -1
     
-    var ShowMoreLess = "closed"
+    var ShowMoreLess = false
     
     var userID = -1
     
     var albumID = -1
     
-    var arrayAlbum = [albums]()
+    var arrayAlbum = [AlbumStore]()
     
     
     var arrayPhotos = [String]()
@@ -89,15 +89,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Albums")
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
+       
         self.items = (try! dataStack.mainContext.fetch(request)) as! [NSManagedObject]
-        
-        //print((try! dataStack.mainContext.fetch(request)))
+       
         
         arrayAlbum.removeAll()
         
         for user in self.items as! [Albums] {
             if (user.userId == userID){
-                let aar = albums()
+                let aar = AlbumStore()
                 aar.id = user.id
                 aar.title = user.title
                 aar.userId = user.userId
@@ -177,12 +177,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             fetchCurrentAlbumsPhotos()
             
-            ShowMoreLess = "open"
+            ShowMoreLess = true
             
             
         }else{
             
-            ShowMoreLess = "closed"
+            ShowMoreLess = false
         }
         
         
@@ -198,7 +198,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         
-        if(ShowMoreLess == "closed"){
+        if(ShowMoreLess == false){
             shouldCellBeExpanded = true
             
             indexOfExpandedCell = indexPath.row
@@ -246,7 +246,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
 }
-class albums {
+class AlbumStore {
     var id = 0
     var userId = 0
     var title = ""
