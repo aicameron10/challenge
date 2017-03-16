@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     var window: UIWindow?
     lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
+    lazy var networking: Networking = Networking(dataStack: self.dataStack)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -45,14 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.fetchUsers { _ in
+        self.networking.fetchUsers { _ in
             
-            self.fetchPosts { _ in
+            self.networking.fetchPosts { _ in
             }
             
-            self.fetchAlbums { _ in
+            self.networking.fetchAlbums { _ in
                 
-                self.fetchPhotos { _ in
+                self.networking.fetchPhotos { _ in
                 }
             }
             
@@ -79,161 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
     
-    
-    
-    public func fetchUsers(_ completion: @escaping (NSError?) -> Void)  {
-        
-        let urlString: String
-        
-        urlString = Constants.Users
-        
-        AppDelegate.Manager.request(urlString, method: .get).responseJSON { response in
-            
-            if let jsonResponse = response.result.value {
-                
-                let responseJ = jsonResponse
-                
-                
-                let json = JSON(responseJ as Any)
-                
-                let k = "{\"data\":" + json.rawString()! + "}"
-                
-                let dict = self.convertToDictionary(text: k)
-                
-                //print(dict?["data"] as! [[String : Any]])
-                
-                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "User", dataStack: self.dataStack) { error in
-                    completion(error)
-                }
-                
-                
-            }
-            
-            
-        }
-    }
-    
-    public func fetchAlbums(_ completion: @escaping (NSError?) -> Void)  {
-        
-        let urlString: String
-        
-        urlString = Constants.Albums
-        
-        AppDelegate.Manager.request(urlString, method: .get).responseJSON { response in
-            
-            if let jsonResponse = response.result.value {
-                
-                let responseJ = jsonResponse
-                
-                let json = JSON(responseJ as Any)
-                
-                let k = "{\"data\":" + json.rawString()! + "}"
-                
-                let dict = self.convertToDictionary(text: k)
-                
-                //print(dict?["data"] as! [[String : Any]])
-                
-                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "Albums", dataStack: self.dataStack) { error in
-                    completion(error)
-                }
-                
-                
-            }
-            
-            
-        }
-    }
-    
-    public func fetchPosts(_ completion: @escaping (NSError?) -> Void)  {
-        
-        let urlString: String
-        
-        urlString = Constants.Posts
-        
-        AppDelegate.Manager.request(urlString, method: .get).responseJSON { response in
-            
-            if let jsonResponse = response.result.value {
-                
-                let responseJ = jsonResponse
-                
-                
-                let json = JSON(responseJ as Any)
-                
-                let k = "{\"data\":" + json.rawString()! + "}"
-                
-                let dict = self.convertToDictionary(text: k)
-                
-                //print(dict?["data"] as! [[String : Any]])
-                
-                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "Posts", dataStack: self.dataStack) { error in
-                    completion(error)
-                }
-                
-                
-            }
-            
-            
-        }
-    }
-    
-    public func fetchPhotos(_ completion: @escaping (NSError?) -> Void)  {
-        
-        let urlString: String
-        
-        urlString = Constants.Photos
-        
-        AppDelegate.Manager.request(urlString, method: .get).responseJSON { response in
-            
-            if let jsonResponse = response.result.value {
-                
-                let responseJ = jsonResponse
-                
-                
-                let json = JSON(responseJ as Any)
-                
-                let k = "{\"data\":" + json.rawString()! + "}"
-                
-                let dict = self.convertToDictionary(text: k)
-                
-                //print(dict?["data"] as! [[String : Any]])
-                
-                Sync.changes(dict?["data"] as! [[String : Any]], inEntityNamed: "Photos", dataStack: self.dataStack) { error in
-                    completion(error)
-                }
-                
-                
-            }
-            
-            
-        }
-    }
-    
-    
-    func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
-    private static var Manager: Alamofire.SessionManager = {
-        
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [:]
-        
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        let manager = Alamofire.SessionManager(
-            configuration: URLSessionConfiguration.default,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        
-        return manager
-    }()
     
     
 }

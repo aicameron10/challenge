@@ -28,6 +28,7 @@
 		D6200B9E1E726119009E0925 /* challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200B9D1E726119009E0925 /* challengeUITests.swift */; };
 		D6200BB21E72A186009E0925 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB11E72A186009E0925 /* Constants.swift */; };
 		D6200BB81E72D06C009E0925 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */; };
+		D66E93761E7AD64A003DA2C5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E93751E7AD64A003DA2C5 /* Networking.swift */; };
 		D6FD81681E76A37A0092BAA6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD81671E76A37A0092BAA6 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		D6200B9F1E726119009E0925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6200BB11E72A186009E0925 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D66E93751E7AD64A003DA2C5 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D6FD81671E76A37A0092BAA6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				D61664D71E72EFA20017D9A7 /* Resources */,
 				D6200B781E726118009E0925 /* AppDelegate.swift */,
 				D6200BB71E72D06C009E0925 /* SwiftyJSON.swift */,
+				D66E93751E7AD64A003DA2C5 /* Networking.swift */,
 				D616659B1E752CEC0017D9A7 /* User.swift */,
 				D6200B7D1E726118009E0925 /* MasterViewController.swift */,
 				D6200BB11E72A186009E0925 /* Constants.swift */,
@@ -504,6 +507,7 @@
 				D6200B801E726118009E0925 /* DetailViewController.swift in Sources */,
 				D61665A21E752E670017D9A7 /* Photos.swift in Sources */,
 				D616659E1E752D9F0017D9A7 /* Posts.swift in Sources */,
+				D66E93761E7AD64A003DA2C5 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,8 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     var detailViewController: DetailViewController? = nil
     
     lazy var dataStack: DATAStack = DATAStack(modelName: "challenge")
+    lazy var networking: Networking = Networking(dataStack: self.dataStack)
+
     
     var items = [NSManagedObject]()
     var emails = [NSManagedObject]()
@@ -103,8 +105,8 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
     
     func fetchNewData() {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.fetchPosts {_ in
+       
+        self.networking.fetchPosts {_ in
             self.fetchCurrentObjects()
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
@@ -122,16 +124,16 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         self.emails = (try! dataStack.mainContext.fetch(requestEmails)) as! [NSManagedObject]
         
         
-        for user in self.items as! [Posts] {
+        for post in self.items as! [Posts] {
             //print(user.userId)
             
-            for email in self.emails as! [User] {
+            for user in self.emails as! [User] {
                 //print(email.email)
-                if (user.userId == email.id){
+                if (post.userId == user.id){
                     var add : [String: String] = [:]
                     
-                    add["title"] = user.title
-                    add["email"] = email.email
+                    add["title"] = post.title
+                    add["email"] = user.email
                     
                     savedFiles.append(add as [String : AnyObject])
                     
